@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -66,13 +65,6 @@
   <script>
     let tidakCounter = 0;
 
-    // Fungsi untuk menangani event sebelum tab ditutup
-    function handleBeforeUnload(event) {
-      const message = "Apakah Anda yakin ingin meninggalkan halaman ini?";
-      event.returnValue = message; // Standar lama untuk browser yang tidak mendukung event.returnValue
-      return message;
-    }
-
     function showResult(isYes) {
       const resultElement = document.getElementById('result');
       const yaButton = document.getElementById('ya');
@@ -85,9 +77,6 @@
         tidakButton.style.display = 'none';
         yaButton.style.display = 'none';
         questionElement.style.display = 'none';
-        
-        // Menghapus event listener sebelumunload ketika jawabannya 'Ya'
-        window.removeEventListener('beforeunload', handleBeforeUnload);
       } else {
         const choices = ['apa kamu yakin?', 'yakin nih?', 'masa sih?', 'Waduh Serius!?', 'yaahh :('];
         const randomIndex = Math.floor(Math.random() * choices.length);
@@ -98,9 +87,6 @@
         yaButton.style.transform = `scale(${1 + 0.1 * tidakCounter})`;
       }
     }
-
-    // Menambahkan event listener sebelumunload saat halaman dimuat
-    window.addEventListener('beforeunload', handleBeforeUnload);
   </script>
 </head>
 <body>
